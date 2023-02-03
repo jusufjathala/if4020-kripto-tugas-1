@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cryptography</title>
+</head>
+<body>
+    <p> Dibuat oleh 13519174 - Jusuf Junior Athala</p>
+    <p> Cara menggunakan: pilih metode cipher, masukkan key, 
+      masukkan m jika menggunakan metode affine / hill, 
+      masukkan b jika menggunakan metode affine,
+      masukkan plaintext dan klik Encrypt ! untuk melakukan enkripsi plaintext,
+      masukkan cyphertext dan klik Decrypt ! untuk melakukan dekripsi cyphertext
+    </p>
+    <p> Hasil dari enkripsi akan ditampilkan di bawah pada bagian Cyphertext.
+      Hasil dari dekripsi akan ditampilkan di bawah pada bagian Decrypted text.
+    </p>
+    <p> Ingat ! Setelah mengklik Encrypt! atau Decrypt!, pilihan metode akan 
+      reset menjadi default vigenere, jangan lupa untuk mengubah metode
+      jika anda ingin melakukan encrypt dan decrypt secara berurutan!</p>
+    <form action = "{{ url_for("cryptography")}}" method = "POST">
+      
+      <p>Choose method</p>
+      <select name="method">
+        <option value="vigenere">vigenere</option>
+        <option value="auto-vigenere">auto-vigenere</option>
+        <option value="extended-vigenere">extended-vigenere</option>
+        <option value="affine">affine</option>
+        <option value="playfair">playfair</option>
+        <option value="hill">hill</option>
+      </select>
+      <p>Input key : <input type = "text" name = "key" value= "{{key}}"/></p>
+      <p>Input m (affine / hill): <input type = "number" name = "m" value= "{{m}}"/></p>
+      <p>Input b (affine cypher): <input type = "number" name = "b" value= "{{b}}"/></p>
+      <p>Input plaintext : <input type = "text" name = "plaintext" value= "{{plaintext}}"/></p>
+      <p><input name = "submit_button" type = "submit" value = "Encrypt!" /></p>
+      <p>Input cyphertext : <input type = "text" name = "cyphertext" value= "{{cyphertext}}"/></p>
+      <p><input name = "submit_button" type = "submit" value = "Decrypt!" /></p>
+      
+
+     </form>
+     <p name = "error_message">{{error_message}}</p>
+     <br>
+
+     <h3>Method Used</h3>
+     <p>{{method}}</p>
+    </br>
+     
+     <h3>Key Used</h3>
+     <p>{{key}}</p>
+    </br>
+     
+     <h3>Original Plain text</h3>
+     <p>{{plaintext}}</p>
+    </br>
+
+     <h3>Cypher text</h3>
+     <p>{{result_cyphertext}}</p>
+    </br>
+
+     <h3>Decrypted text</h3>
+     <p>{{result_decryptedtext}}</p>
+    </br>
+     
+
+</body>
+</html>
